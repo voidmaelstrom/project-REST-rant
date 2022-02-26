@@ -11,14 +11,14 @@ router.get('/', (req, res) => {
         city: 'Seattle',
         state: 'WA',
         cuisines: 'Thai, Pan-Asian',
-        pic: 'https://assets3.thrillist.com/v1/image/1805385/550x550/flatten;crop_down;webp=auto;jpeg_quality=70'
+        pic: 'images/ThaiFood.jpg'
       },
       {
         name: 'Coding Cat Cafe',
         city: 'Phoenix',
         state: 'AZ',
         cuisines: 'Coffee, Bakery',
-        pic: 'https://www.thecoronadophx.com/img/home-pastry-case.jpg'
+        pic: 'images/Pastries.jpg'
       }
     ]
     res.render('places/index', { places })
