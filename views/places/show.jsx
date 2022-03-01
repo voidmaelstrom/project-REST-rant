@@ -7,8 +7,9 @@ function show (data) {
           <main>
             <h1>{ data.place.name }</h1>
             <h2>Rating</h2>
-            <h3>Not Rated</h3>
+            <h4>Not Rated</h4>
             <h2>Description</h2>
+            <h4>Located in {data.place.city}, {data.place.state}</h4>
           </main>
           <a href={`/places/${data.id}/edit`} className="btn btn-warning"> 
             Edit
@@ -17,7 +18,7 @@ function show (data) {
             <button type="submit" className="btn btn-danger">
               Delete
             </button>
-          </form>
+          </form> 
         </Def>
     )
 }
