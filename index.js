@@ -1,6 +1,7 @@
 // Modules and Globals
 require('dotenv').config()
 const express = require('express')
+const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const app = express()
 
@@ -24,4 +25,7 @@ app.get('*', (req, res) => {
 })
 
 // Listen for Connections
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true}, 
+    () => { console.log('connected to mongo: ', process.env.MONGO_URI) }
+  )
 app.listen(process.env.PORT)
