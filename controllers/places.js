@@ -100,6 +100,18 @@ router.get('/:id/comment', (req, res) => {
   res.render('places/comment', {'id':req.params.id})
 })
 
+router.delete('/:id/comment/:id', (req, res) => {
+  db.Comment.findByIdAndDelete(req.params.id)
+  .then(() => {
+      // Reload current place page
+      res.redirect(req.get('referer'))
+  })
+  .catch(err => {
+      console.log('err', err)
+      res.render('error404')
+  })
+})
+
 // Add Comment
 router.post('/:id/comment', (req, res) => {
   console.log(req.body)
@@ -123,14 +135,6 @@ router.post('/:id/comment', (req, res) => {
   .catch(err => {
       res.render('error404')
   })
-})
-
-router.post('/:id/rant', (req, res) => {
-  res.send('POST /places/:id/rant stub')
-})
-
-router.delete('/:id/rant/:rantId', (req, res) => {
-  res.send('DELETE /places/:id/rant/:rantId stub')
 })
 
 module.exports = router

@@ -8,9 +8,9 @@ function show (data) {
     </h3>
   )
   let rating = (
-    <h3 className="inactive">
+    <h2 className="inactive">
       Not yet rated
-   </h3>
+   </h2>
   )
   if (data.place.comments.length) {
     let sumRatings = data.place.comments.reduce((tot, c) => {
@@ -35,6 +35,9 @@ function show (data) {
             <stong>- {c.author}</stong>
           </h3>
           <h4>Rating: {c.stars}</h4>
+          <form method="POST" action={`/places/${data.place.id}/comment/${c.id}?_method=DELETE`}>
+            <input type="submit" className="btn btn-danger" value="Delete Comment" />
+          </form>
         </div>
       )
     })
