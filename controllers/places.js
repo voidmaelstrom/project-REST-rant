@@ -2,9 +2,6 @@ const router = require('express').Router()
 const db = require('../models')
 const places = require('../models/places')
 
-// router.get('/', (req, res) => {
-//     res.send('GET /places')
-// })
 router.get('/', (req, res) => {
   db.Place.find()
     .then((places) => {
@@ -18,7 +15,6 @@ router.get('/', (req, res) => {
 
 // GET /places
 router.get('/', (req, res) => {
-    // res.render('places/index', { places })
     res.send('GET /places stub')
 })
 
@@ -39,11 +35,6 @@ router.get('/:id', (req, res) => {
     })
 })
 
-// router.post('/', (req, res) => {
-//   console.log(req.body)
-//   res.send('POST /places')
-// })
-
 router.post('/', (req, res) => {
   db.Place.create(req.body)
     .then(() => {
@@ -51,7 +42,6 @@ router.post('/', (req, res) => {
     })
     .catch(err => {
       if (err && err.name == 'ValidationError') {
-        // TODO: Generate error message(s)
         let message = 'Validation Error: '
         for (var field in err.errors) {
           message += `${field} was ${err.errors[field].value}. `
